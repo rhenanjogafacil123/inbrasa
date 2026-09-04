@@ -1,0 +1,136 @@
+/* PARTE 2 — HERO PREMIUM: TÍTULO, ATMOSFERA, CTA E ENTRADA */
+.hero-intro{overflow:hidden}
+.intro-copy{z-index:8;max-width:760px}
+
+/* Assinatura superior mais editorial */
+.hero-intro .eyebrow{
+  display:inline-flex;align-items:center;gap:8px;margin-bottom:18px;padding:7px 11px 7px 8px;
+  border:1px solid rgba(255,119,42,.16);border-radius:999px;
+  background:linear-gradient(180deg,rgba(255,106,20,.055),rgba(255,106,20,.015));
+  box-shadow:inset 0 1px 0 rgba(255,255,255,.025);
+  color:#ff8a2f;font-size:12px;letter-spacing:.115em;
+  opacity:0;transform:translateY(12px);animation:heroReveal .7s .08s cubic-bezier(.2,.75,.25,1) forwards;
+}
+.eyebrow-fire{width:24px;height:24px;display:grid;place-items:center;border-radius:50%;background:rgba(255,92,10,.08);box-shadow:0 0 17px rgba(255,85,0,.13)}
+
+/* FEITO NA: branco quente, levemente queimado */
+.intro-copy h1{position:relative;isolation:isolate;overflow:visible}
+.intro-copy h1 span{
+  position:relative;display:block;width:max-content;max-width:100%;
+  font-size:clamp(92px,9vw,154px);letter-spacing:-.035em;line-height:.82;
+  color:#ece7df;
+  background-image:
+    linear-gradient(180deg,#f5f1ea 0%,#e8e1d7 52%,#bfb6aa 100%),
+    repeating-linear-gradient(97deg,transparent 0 8px,rgba(0,0,0,.12) 9px 10px);
+  -webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;
+  filter:drop-shadow(0 9px 18px rgba(0,0,0,.34));
+  opacity:0;transform:translateY(24px);animation:heroReveal .82s .17s cubic-bezier(.2,.75,.25,1) forwards;
+}
+
+/* BRASA: textura de carvão aceso feita só com CSS */
+.intro-copy h1 b{
+  position:relative;display:block;width:max-content;max-width:100%;
+  font-size:clamp(108px,10.5vw,176px);letter-spacing:-.045em;line-height:.82;font-weight:400;
+  background:
+    radial-gradient(circle at 12% 70%,#ffd26d 0 4%,#ff7a18 5% 8%,transparent 9%),
+    radial-gradient(circle at 39% 32%,#ffb34a 0 3%,#ff5710 4% 7%,transparent 8%),
+    radial-gradient(circle at 68% 74%,#ff9b31 0 3%,#ff3e06 4% 8%,transparent 9%),
+    radial-gradient(circle at 88% 35%,#ffd06c 0 2.5%,#ff6b11 3.5% 7%,transparent 8%),
+    linear-gradient(180deg,#ffb35c 0%,#ff6b18 28%,#ef3d06 57%,#9f1800 100%);
+  background-size:160% 160%,135% 140%,145% 150%,160% 160%,100% 100%;
+  background-position:10% 58%,30% 30%,70% 65%,90% 35%,center;
+  -webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;
+  filter:drop-shadow(0 0 14px rgba(255,82,0,.18)) drop-shadow(0 12px 26px rgba(0,0,0,.34));
+  text-shadow:0 0 28px rgba(255,74,0,.1);
+  opacity:0;transform:translateY(28px) scale(.985);animation:heroBrasa .9s .25s cubic-bezier(.18,.8,.22,1) forwards;
+}
+.intro-copy h1 b:before{
+  content:attr(data-text);position:absolute;inset:0;z-index:-1;color:transparent;-webkit-text-stroke:1px rgba(255,142,55,.18);
+  filter:blur(.2px);transform:translate(1px,1px);
+}
+.intro-copy h1 b:after{
+  content:attr(data-text);position:absolute;inset:0;z-index:-2;color:transparent;-webkit-text-stroke:5px rgba(255,70,0,.035);filter:blur(7px);
+}
+
+/* Linha de brasa */
+.hero-intro .rough-line{position:relative;width:190px;height:12px;margin:25px 0 20px;background:none;clip-path:none;overflow:visible;opacity:0;animation:lineReveal .65s .48s ease forwards}
+.hero-intro .rough-line:before{
+  content:"";position:absolute;left:0;top:5px;width:100%;height:2px;
+  background:linear-gradient(90deg,#ff4b00 0%,#ff9a35 22%,rgba(255,83,5,.52) 55%,transparent 100%);
+  box-shadow:0 0 12px rgba(255,75,0,.42);clip-path:polygon(0 45%,7% 12%,13% 70%,20% 30%,29% 68%,37% 31%,48% 74%,58% 34%,69% 69%,79% 30%,90% 66%,100% 43%,100% 65%,90% 82%,79% 55%,69% 88%,58% 54%,48% 90%,37% 50%,29% 87%,20% 52%,13% 92%,7% 39%,0 70%);
+}
+.hero-intro .rough-line span{position:absolute;right:17%;top:1px;width:7px;height:7px;border-radius:50%;background:#ff9c3d;box-shadow:0 0 15px #ff5a00}
+
+/* Texto */
+.hero-intro .hero-text{
+  position:relative;max-width:575px;margin-bottom:27px;padding-left:17px;color:#cec7be;font-size:18px;line-height:1.58;
+  opacity:0;transform:translateY(16px);animation:heroReveal .7s .53s cubic-bezier(.2,.75,.25,1) forwards;
+}
+.hero-intro .hero-text:before{content:"";position:absolute;left:0;top:5px;bottom:5px;width:1px;background:linear-gradient(#ff7121,rgba(255,113,33,.08));box-shadow:0 0 8px rgba(255,90,0,.18)}
+
+/* CTAs refinados */
+.hero-intro .hero-actions{gap:12px;opacity:0;transform:translateY(14px);animation:heroReveal .7s .64s cubic-bezier(.2,.75,.25,1) forwards}
+.hero-intro .hero-actions .pill{height:50px;min-width:190px;padding:0 23px;border-radius:14px;font-size:12px;letter-spacing:.095em;position:relative;overflow:hidden}
+.hero-intro .pill-main{
+  border-color:rgba(255,148,69,.58);color:#fff6ee;
+  background:linear-gradient(180deg,#ff741d 0%,#e34707 48%,#b92700 100%);
+  box-shadow:inset 0 1px 0 rgba(255,255,255,.18),inset 0 -10px 24px rgba(104,16,0,.22),0 13px 32px rgba(255,68,0,.19);
+}
+.hero-intro .pill-main:before{content:"";position:absolute;inset:0;background:linear-gradient(110deg,transparent 18%,rgba(255,255,255,.13) 43%,transparent 62%);transform:translateX(-120%);transition:transform .6s ease}
+.hero-intro .pill-main:hover:before{transform:translateX(120%)}
+.hero-intro .pill-main:hover{box-shadow:inset 0 1px 0 rgba(255,255,255,.2),0 15px 39px rgba(255,70,0,.28);transform:translateY(-2px)}
+.hero-intro .pill-outline{border-color:rgba(255,124,44,.42);background:linear-gradient(180deg,rgba(255,255,255,.025),rgba(255,255,255,.006));color:#e9e3dc;box-shadow:inset 0 1px 0 rgba(255,255,255,.025)}
+.hero-intro .pill-outline:hover{border-color:rgba(255,130,48,.72);background:rgba(255,91,10,.055);box-shadow:0 0 25px rgba(255,75,0,.07)}
+.cta-arrow{font-size:14px;margin-left:7px;color:#ff8c35}
+
+.hero-signature{display:flex;align-items:center;gap:9px;margin-top:18px;color:#706a63;font-size:9px;letter-spacing:.18em;font-weight:600;opacity:0;animation:fadeOnly .8s .82s forwards}
+.hero-signature span{width:28px;height:1px;background:linear-gradient(90deg,#7b2a08,transparent)}
+
+/* Atmosfera do lado direito: calor e profundidade sem trazer o burger para a primeira tela */
+.hero-atmosphere{position:absolute;z-index:3;right:1.5%;top:10%;bottom:7%;width:47%;pointer-events:none;overflow:hidden;opacity:0;animation:fadeOnly 1.1s .22s forwards}
+.heat-core{position:absolute;right:5%;top:36%;width:58%;aspect-ratio:1;border-radius:50%;background:radial-gradient(circle,rgba(255,130,38,.14) 0%,rgba(255,67,0,.08) 22%,rgba(255,57,0,.025) 48%,transparent 70%);filter:blur(2px)}
+.heat-orbit{position:absolute;border:1px solid rgba(255,111,30,.075);border-radius:50%;filter:drop-shadow(0 0 14px rgba(255,72,0,.03))}
+.heat-orbit-a{width:64%;aspect-ratio:1;right:2%;top:22%;transform:rotate(-16deg);animation:heatFloat 8s ease-in-out infinite alternate}
+.heat-orbit-b{width:47%;aspect-ratio:1;right:16%;top:34%;border-color:rgba(255,255,255,.045);animation:heatFloat 10s -3s ease-in-out infinite alternate-reverse}
+.hero-ghost{position:absolute;right:1.5%;bottom:1%;font:400 clamp(82px,9vw,150px)/.72 Anton,Impact,sans-serif;text-align:right;letter-spacing:-.04em;color:rgba(255,255,255,.018);-webkit-text-stroke:1px rgba(255,126,42,.035);transform:rotate(-2deg);user-select:none}
+
+/* Scroll cue mais discreto */
+.hero-intro .intro-cue{opacity:0;animation:fadeOnly .8s .95s forwards}
+.hero-intro .intro-cue strong{color:#f1e8df}.hero-intro .intro-cue small{color:#766f68}
+
+@keyframes heroReveal{to{opacity:1;transform:translateY(0)}}
+@keyframes heroBrasa{to{opacity:1;transform:translateY(0) scale(1)}}
+@keyframes lineReveal{from{opacity:0;transform:scaleX(.7);transform-origin:left}to{opacity:1;transform:scaleX(1);transform-origin:left}}
+@keyframes fadeOnly{to{opacity:1}}
+@keyframes heatFloat{from{transform:translate3d(0,0,0) rotate(-14deg) scale(1)}to{transform:translate3d(-9px,-12px,0) rotate(-10deg) scale(1.025)}}
+
+@media(max-width:1020px){
+  .intro-copy{max-width:610px}.intro-copy h1 span{font-size:92px}.intro-copy h1 b{font-size:110px}
+  .hero-intro .hero-text{max-width:520px;font-size:16px}.hero-atmosphere{width:44%;right:-2%}.hero-ghost{font-size:92px}
+}
+
+@media(max-width:760px){
+  .hero-intro{padding:92px 20px 84px;align-items:flex-start}
+  .intro-copy{max-width:100%;padding-top:4px}
+  .hero-intro .eyebrow{font-size:9px;letter-spacing:.075em;padding:5px 8px 5px 6px;margin-bottom:12px;gap:6px}.eyebrow-fire{width:20px;height:20px;font-size:12px}
+  .intro-copy h1 span{font-size:clamp(64px,18.5vw,84px);line-height:.84;letter-spacing:-.04em}
+  .intro-copy h1 b{font-size:clamp(78px,22.5vw,98px);line-height:.82;letter-spacing:-.048em}
+  .hero-intro .rough-line{width:132px;height:8px;margin:14px 0 12px}.hero-intro .rough-line:before{top:3px}.hero-intro .rough-line span{width:5px;height:5px;top:0}
+  .hero-intro .hero-text{max-width:345px;margin-bottom:16px;padding-left:12px;font-size:13px;line-height:1.48}.hero-intro .hero-text:before{top:3px;bottom:3px}
+  .hero-intro .hero-actions{display:grid;grid-template-columns:1fr;gap:8px;max-width:315px}.hero-intro .hero-actions .pill{height:44px;min-width:0;border-radius:12px;font-size:10px;padding:0 17px}
+  .hero-signature{margin-top:12px;font-size:7px;letter-spacing:.14em;gap:7px}.hero-signature span{width:20px}
+  .hero-atmosphere{right:-30%;top:31%;bottom:7%;width:90%;opacity:.6}.hero-ghost{display:none}.heat-core{right:8%;top:30%;width:63%}.heat-orbit-a{width:67%;right:2%;top:20%}.heat-orbit-b{width:48%;right:18%;top:34%}
+  .hero-intro .intro-cue{left:18px;bottom:max(13px,env(safe-area-inset-bottom))}
+}
+
+@media(max-width:390px){
+  .hero-intro{padding-top:87px;padding-inline:17px}.hero-intro .eyebrow{font-size:8.3px}.intro-copy h1 span{font-size:61px}.intro-copy h1 b{font-size:75px}.hero-intro .hero-text{font-size:12.5px;max-width:330px}.hero-intro .hero-actions{max-width:290px}.hero-signature{display:none}
+}
+
+@media(max-height:700px) and (max-width:760px){
+  .hero-intro{padding-top:80px;padding-bottom:67px}.hero-intro .eyebrow{margin-bottom:8px}.intro-copy h1 span{font-size:58px}.intro-copy h1 b{font-size:71px}.hero-intro .rough-line{margin:9px 0}.hero-intro .hero-text{font-size:12px;line-height:1.4;margin-bottom:11px}.hero-intro .hero-actions .pill{height:39px}.hero-signature{display:none}.intro-cue small{display:none}
+}
+
+@media(prefers-reduced-motion:reduce){
+  .hero-intro .eyebrow,.intro-copy h1 span,.intro-copy h1 b,.hero-intro .rough-line,.hero-intro .hero-text,.hero-intro .hero-actions,.hero-signature,.hero-atmosphere,.hero-intro .intro-cue{animation:none!important;opacity:1!important;transform:none!important}.heat-orbit{animation:none!important}
+}
