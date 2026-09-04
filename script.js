@@ -1,96 +1,83 @@
-(async()=>{
-  const parts = Array.from({length:8},(_,i)=>`./assets/inbrasa-sprite-${i}.txt`);
-  try{
-    const data=(await Promise.all(parts.map(p=>fetch(p).then(r=>{if(!r.ok)throw new Error(r.status);return r.text()})))).join('');
-    document.documentElement.style.setProperty('--sprite',`url("data:image/jpeg;base64,${data}")`);
-  }catch(e){console.warn('In-Brasa sprite não carregou',e)}
-})();
+(()=>{
+  const root=document.documentElement;
+  const hero=document.querySelector('.hero-stage');
+  const slices=[...document.querySelectorAll('.burger-slice')];
+  const header=document.querySelector('.topbar');
+  const menuButton=document.querySelector('.menu-button');
+  const mobileMenu=document.querySelector('.mobile-menu');
+  const reduced=matchMedia('(prefers-reduced-motion: reduce)').matches;
 
-(() => {
-  const root = document.documentElement;
-  const hero = document.querySelector('.hero-stage');
-  const layers = [...document.querySelectorAll('.burger-layer')];
-  const header = document.querySelector('.topbar');
-  const menuBtn = document.querySelector('.menu-button');
-  const mobileMenu = document.querySelector('.mobile-menu');
-  const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const clamp=(n,a,b)=>Math.min(b,Math.max(a,n));
+  const ease=t=>1-Math.pow(1-t,3);
 
-  const desktop = {
-    targetY: [-170,-113,-69,-28, 7, 63, 145],
-    explodeY:[-305,-205,-128,-58, 18, 118, 255],
-    x:[16,-25,23,-28,20,-10,12],
-    r:[-2.5,3.3,-2.2,2.1,-4,1.4,-1.3],
-    s:[1,1.02,.98,.98,.91,1.03,1]
+  const desktop={
+    startY:[-95,-70,-42,-12,24,62,102],
+    endY:[112,80,48,18,-16,-54,-94],
+    startX:[16,-18,12,-10,10,-8,8],
+    rot:[-2.2,2.4,-1.5,1.3,-1.8,1,-.8]
   };
-  const mobile = {
-    targetY: [-114,-76,-45,-17, 8, 48, 100],
-    explodeY:[-175,-118,-72,-31, 5, 72, 155],
-    x:[7,-10,10,-12,8,-5,6],
-    r:[-1.1,1.5,-1,1,-1.8,.8,-.7],
-    s:[.98,1,.98,.96,.84,1,.98]
+  const mobile={
+    startY:[-62,-45,-29,-8,16,40,68],
+    endY:[72,50,30,10,-10,-34,-58],
+    startX:[7,-8,6,-6,5,-4,4],
+    rot:[-1.2,1.4,-.8,.8,-1,.6,-.5]
   };
 
-  function clamp(n,a,b){ return Math.min(b,Math.max(a,n)); }
-  function easeOutCubic(t){ return 1 - Math.pow(1-t,3); }
   function updateHero(){
-    if(!hero) return;
-    const rect = hero.getBoundingClientRect();
-    const max = Math.max(1, hero.offsetHeight - innerHeight);
-    const raw = clamp(-rect.top / max, 0, 1);
-    const p = easeOutCubic(clamp(raw * 1.08,0,1));
-    root.style.setProperty('--progress', raw.toFixed(4));
+    if(!hero)return;
+    const r=hero.getBoundingClientRect();
+    const max=Math.max(1,hero.offsetHeight-innerHeight);
+    const raw=clamp(-r.top/max,0,1);
+    const p=ease(raw);
+    root.style.setProperty('--progress',raw.toFixed(4));
 
-    const isMobile = innerWidth <= 760;
-    const cfg = isMobile ? mobile : desktop;
-    const base = isMobile ? Math.min(.86, innerWidth/440) : Math.min(1.22, Math.max(.98, innerWidth/1200));
-    const spriteScale = 2.222;
-    layers.forEach((el,i) => {
-      const y = (cfg.explodeY[i] + (cfg.targetY[i]-cfg.explodeY[i])*p) * base;
-      const x = cfg.x[i] * (1-p) * base;
-      const r = cfg.r[i] * (1-p);
-      const s = (cfg.s[i] + (1-cfg.s[i])*p) * base * spriteScale;
-      const entry = clamp(raw*3.2 - i*.035,0,1);
-      el.style.opacity = reduce ? 1 : (0.28 + entry*.72).toFixed(3);
-      el.style.transform = `translate(-50%,-50%) translate3d(${x}px,${y}px,0) rotate(${r}deg) scale(${s})`;
+    const cfg=innerWidth<=760?mobile:desktop;
+    const scale=innerWidth<=760?1:Math.min(1.12,Math.max(.92,innerWidth/1400));
+
+    slices.forEach((slice,i)=>{
+      const y=(cfg.startY[i]+(cfg.endY[i]-cfg.startY[i])*p)*scale;
+      const x=cfg.startX[i]*(1-p)*scale;
+      const rot=cfg.rot[i]*(1-p);
+      slice.style.transform=reduced?'none':`translate3d(${x}px,${y}px,0) rotate(${rot}deg)`;
+      slice.style.opacity=(.72+raw*.28).toFixed(3);
     });
-    header.classList.toggle('scrolled', scrollY > 30);
+
+    header?.classList.toggle('scrolled',scrollY>28);
   }
 
   let ticking=false;
-  function requestUpdate(){
-    if(!ticking){
-      requestAnimationFrame(()=>{ updateHero(); ticking=false; });
-      ticking=true;
-    }
+  function schedule(){
+    if(ticking)return;
+    ticking=true;
+    requestAnimationFrame(()=>{updateHero();ticking=false});
   }
-  addEventListener('scroll',requestUpdate,{passive:true});
-  addEventListener('resize',requestUpdate,{passive:true});
+  addEventListener('scroll',schedule,{passive:true});
+  addEventListener('resize',schedule,{passive:true});
   updateHero();
 
-  const emberRoot = document.querySelector('.embers');
-  const emberCount = innerWidth <= 760 ? 18 : 34;
-  for(let i=0;i<emberCount;i++){
+  const emberRoot=document.querySelector('.embers');
+  const count=innerWidth<=760?17:32;
+  for(let i=0;i<count;i++){
     const e=document.createElement('i');
     e.className='ember';
-    e.style.left=(45+Math.random()*58)+'%';
-    e.style.bottom=(-5-Math.random()*25)+'%';
-    e.style.animationDuration=(4.5+Math.random()*7)+'s';
+    e.style.left=(42+Math.random()*62)+'%';
+    e.style.bottom=(-8-Math.random()*18)+'%';
+    e.style.width=e.style.height=(1.5+Math.random()*2.8)+'px';
+    e.style.animationDuration=(4.8+Math.random()*6.2)+'s';
     e.style.animationDelay=(-Math.random()*10)+'s';
     e.style.setProperty('--drift',(-55+Math.random()*110)+'px');
-    const size=1.5+Math.random()*2.5;
-    e.style.width=size+'px'; e.style.height=size+'px';
-    emberRoot.appendChild(e);
+    emberRoot?.appendChild(e);
   }
 
-  menuBtn?.addEventListener('click',()=>{
+  menuButton?.addEventListener('click',()=>{
     const open=mobileMenu.classList.toggle('open');
-    menuBtn.setAttribute('aria-expanded',String(open));
+    menuButton.setAttribute('aria-expanded',String(open));
     mobileMenu.setAttribute('aria-hidden',String(!open));
     document.body.style.overflow=open?'hidden':'';
   });
   mobileMenu?.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>{
     mobileMenu.classList.remove('open');
-    menuBtn.setAttribute('aria-expanded','false');
+    menuButton.setAttribute('aria-expanded','false');
     mobileMenu.setAttribute('aria-hidden','true');
     document.body.style.overflow='';
   }));
