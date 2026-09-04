@@ -11,6 +11,7 @@
   <link href="https://fonts.googleapis.com/css2?family=Anton&family=Oswald:wght@400;500;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="./style.css" />
   <link rel="stylesheet" href="./part1-premium.css" />
+  <link rel="stylesheet" href="./part2-hero.css" />
 </head>
 <body>
   <div class="grain" aria-hidden="true"></div>
@@ -38,15 +39,24 @@
     <section class="hero-intro" id="inicio">
       <div class="fire-glow intro-glow-a" aria-hidden="true"></div>
       <div class="fire-glow intro-glow-b" aria-hidden="true"></div>
+
+      <div class="hero-atmosphere" aria-hidden="true">
+        <span class="heat-orbit heat-orbit-a"></span>
+        <span class="heat-orbit heat-orbit-b"></span>
+        <span class="heat-core"></span>
+        <span class="hero-ghost">IN<br>BRASA</span>
+      </div>
+
       <div class="intro-copy">
-        <p class="eyebrow">🔥 ARTESANAL <i>•</i> DEFUMADO <i>•</i> IRRESISTÍVEL</p>
-        <h1><span>FEITO NA</span><b>BRASA</b></h1>
-        <div class="rough-line" aria-hidden="true"></div>
+        <p class="eyebrow"><span class="eyebrow-fire">🔥</span> ARTESANAL <i>•</i> DEFUMADO <i>•</i> IRRESISTÍVEL</p>
+        <h1 aria-label="Feito na Brasa"><span>FEITO NA</span><b data-text="BRASA">BRASA</b></h1>
+        <div class="rough-line" aria-hidden="true"><span></span></div>
         <p class="hero-text">Ingredientes selecionados e o verdadeiro sabor da brasa. Hambúrgueres artesanais preparados com fogo, técnica e paixão.</p>
         <div class="hero-actions">
-          <a class="pill pill-main" href="#cardapio">🔥 Pedir agora</a>
-          <a class="pill pill-outline" href="#cardapio">Ver cardápio</a>
+          <a class="pill pill-main" href="#cardapio"><span>🔥</span> Pedir agora</a>
+          <a class="pill pill-outline" href="#cardapio">Ver cardápio <span class="cta-arrow">↗</span></a>
         </div>
+        <div class="hero-signature" aria-hidden="true"><span></span> FOGO • TÉCNICA • PAIXÃO</div>
       </div>
 
       <a class="intro-cue" href="#montagem" aria-label="Descer para ver o hambúrguer">
