@@ -3,18 +3,22 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover" />
-  <meta name="theme-color" content="#070707" />
-  <meta name="description" content="In-Brasa — Hambúrgueres artesanais feitos na brasa." />
+  <meta name="theme-color" content="#050505" />
+  <meta name="description" content="In-Brasa — hambúrgueres artesanais preparados na brasa." />
   <title>In-Brasa | Hambúrgueres na Brasa</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Anton&family=Oswald:wght@400;500;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="./style.css" />
 </head>
 <body>
-  <div class="site-noise" aria-hidden="true"></div>
+  <div class="grain" aria-hidden="true"></div>
   <div class="embers" aria-hidden="true"></div>
 
   <header class="topbar" id="topo">
-    <a class="brand" href="#topo" aria-label="In-Brasa — início">
-      <span class="sprite spr-logo" role="img" aria-label="In-Brasa Hambúrgueres na Brasa"></span>
+    <a class="brand" href="#inicio" aria-label="In-Brasa — início">
+      <span class="brand-fire">🔥</span>
+      <span class="brand-copy"><strong>IN-BRASA</strong><small>HAMBÚRGUERES NA BRASA</small></span>
     </a>
 
     <nav class="desktop-nav" aria-label="Navegação principal">
@@ -25,126 +29,116 @@
       <a href="#contato">Contato</a>
     </nav>
 
-    <a class="order order-small" href="#cardapio" aria-label="Ir para o cardápio">
-      Pedir agora <span aria-hidden="true">🔥</span>
-    </a>
-
-    <button class="menu-button" aria-label="Abrir menu" aria-expanded="false">
-      <span></span><span></span><span></span>
-    </button>
+    <a class="pill pill-small" href="#cardapio">🔥 Pedir agora</a>
+    <button class="menu-button" aria-label="Abrir menu" aria-expanded="false"><span></span><span></span><span></span></button>
   </header>
 
   <main>
-    <section class="hero-stage" id="inicio" aria-label="Apresentação In-Brasa">
+    <section class="hero-stage" id="inicio">
       <div class="hero-sticky">
-        <div class="hero-glow" aria-hidden="true"></div>
+        <div class="fire-glow fire-glow-a" aria-hidden="true"></div>
+        <div class="fire-glow fire-glow-b" aria-hidden="true"></div>
 
         <div class="hero-copy">
-          <p class="eyebrow"><span>🔥</span> artesanal <i>•</i> defumado <i>•</i> irresistível</p>
-          <h1>
-            <span class="line-white">Feito na</span>
-            <span class="line-fire">Brasa</span>
-          </h1>
-          <div class="scribble" aria-hidden="true"></div>
-          <p class="hero-description">Ingredientes selecionados e o verdadeiro sabor da brasa. Hambúrgueres artesanais preparados com fogo, técnica e paixão.</p>
+          <p class="eyebrow">🔥 ARTESANAL <i>•</i> DEFUMADO <i>•</i> IRRESISTÍVEL</p>
+          <h1><span>FEITO NA</span><b>BRASA</b></h1>
+          <div class="rough-line" aria-hidden="true"></div>
+          <p class="hero-text">Ingredientes selecionados e o verdadeiro sabor da brasa. Hambúrgueres artesanais preparados com fogo, técnica e paixão.</p>
           <div class="hero-actions">
-            <a class="order main-order" href="#cardapio"><span aria-hidden="true">🔥</span> Pedir agora</a>
-            <a class="secondary" href="#cardapio">Ver cardápio</a>
+            <a class="pill pill-main" href="#cardapio">🔥 Pedir agora</a>
+            <a class="pill pill-outline" href="#cardapio">Ver cardápio</a>
           </div>
         </div>
 
-        <div class="burger-scene" aria-label="Hambúrguer sendo montado conforme o scroll">
-          <div class="smoke smoke-a" aria-hidden="true"></div>
-          <div class="smoke smoke-b" aria-hidden="true"></div>
+        <div class="burger-zone" aria-label="Hambúrguer fotográfico se montando conforme o scroll">
+          <div class="smoke smoke-1" aria-hidden="true"></div>
+          <div class="smoke smoke-2" aria-hidden="true"></div>
+          <div class="burger-halo" aria-hidden="true"></div>
+          <div class="burger-canvas">
+            <div class="burger-slice s0" data-layer="0"></div>
+            <div class="burger-slice s1" data-layer="1"></div>
+            <div class="burger-slice s2" data-layer="2"></div>
+            <div class="burger-slice s3" data-layer="3"></div>
+            <div class="burger-slice s4" data-layer="4"></div>
+            <div class="burger-slice s5" data-layer="5"></div>
+            <div class="burger-slice s6" data-layer="6"></div>
+          </div>
           <div class="burger-shadow" aria-hidden="true"></div>
-          <span class="sprite burger-layer spr-bun-top" data-layer="0" role="img" aria-label="Pão superior"></span>
-          <span class="sprite burger-layer spr-bacon" data-layer="1" role="img" aria-label="Bacon"></span>
-          <span class="sprite burger-layer spr-lettuce" data-layer="2" role="img" aria-label="Alface"></span>
-          <span class="sprite burger-layer spr-tomato" data-layer="3" role="img" aria-label="Tomate"></span>
-          <span class="sprite burger-layer onion-layer spr-onion" data-layer="4" role="img" aria-label="Cebola caramelizada"></span>
-          <span class="sprite burger-layer spr-patty" data-layer="5" role="img" aria-label="Carne na brasa com cheddar"></span>
-          <span class="sprite burger-layer spr-bun-bottom" data-layer="6" role="img" aria-label="Pão inferior"></span>
         </div>
 
-        <div class="scroll-hint" aria-hidden="true">
+        <div class="scroll-cue" aria-hidden="true">
           <div class="mouse"><span></span></div>
-          <span>Role para montar</span>
+          <div><strong>ROLE PARA EXPLORAR</strong><small>O sabor se revela a cada camada</small></div>
           <b>↓</b>
         </div>
-
-        <div class="hero-progress" aria-hidden="true"><span></span></div>
+        <div class="progress" aria-hidden="true"><span></span></div>
       </div>
     </section>
 
-    <section class="menu-preview" id="cardapio">
-      <div class="section-heading">
-        <p>🔥 direto da nossa grelha</p>
-        <h2>Escolha sua <span>Brasa</span></h2>
-        <p class="section-subtitle">Três intensidades, uma mesma assinatura: carne de costela, pão sacadura e sabor de churrasqueira.</p>
+    <section class="menu-section" id="cardapio">
+      <div class="section-kicker">🔥 DIRETO DA NOSSA GRELHA</div>
+      <div class="section-head">
+        <h2>ESCOLHA SUA <span>BRASA</span></h2>
+        <p>Três intensidades. Uma mesma assinatura: carne de costela, pão sacadura e sabor de churrasqueira.</p>
       </div>
 
-      <div class="burger-cards">
-        <article class="burger-card">
-          <span class="card-number">01</span>
-          <div class="product-visual"><span class="sprite product-sprite spr-inbrasa" role="img" aria-label="Hambúrguer Inbrasa"></span></div>
-          <div class="card-content">
-            <p class="mini-label">A entrada perfeita</p>
-            <h3>Inbrasa</h3>
-            <p>Pão sacadura, blend de costela, cheddar, pasta de alho da casa, vinagrete e barbecue.</p>
-            <div class="price"><small>R$</small> 25<span>,00</span></div>
-          </div>
+      <div class="menu-grid">
+        <article class="menu-card">
+          <span class="number">01</span>
+          <div class="card-flame">🔥</div>
+          <p class="tag">A entrada perfeita</p>
+          <h3>INBRASA</h3>
+          <p>Pão sacadura, carne de 100g blend de costela, cheddar, pasta de alho da casa, vinagrete e barbecue.</p>
+          <div class="price"><small>R$</small> 25<span>,00</span></div>
         </article>
 
-        <article class="burger-card featured">
-          <div class="popular">Mais pedido</div>
-          <span class="card-number">02</span>
-          <div class="product-visual"><span class="sprite product-sprite spr-inbrasado" role="img" aria-label="Hambúrguer Inbrasado"></span></div>
-          <div class="card-content">
-            <p class="mini-label">Mais fumaça. Mais sabor.</p>
-            <h3>Inbrasado</h3>
-            <p>Blend de costela 160g, cheddar, pasta de alho, bacon fatiado, vinagrete e molho de bacon.</p>
-            <div class="price"><small>R$</small> 35<span>,00</span></div>
-          </div>
+        <article class="menu-card featured">
+          <div class="most-wanted">MAIS PEDIDO</div>
+          <span class="number">02</span>
+          <div class="card-flame">🔥</div>
+          <p class="tag">Mais fumaça. Mais sabor.</p>
+          <h3>INBRASADO</h3>
+          <p>Carne de 160g blend de costela, cheddar, pasta de alho da casa, bacon fatiado, vinagrete e molho de bacon.</p>
+          <div class="price"><small>R$</small> 35<span>,00</span></div>
         </article>
 
-        <article class="burger-card">
-          <span class="card-number">03</span>
-          <div class="product-visual"><span class="sprite product-sprite spr-tudo" role="img" aria-label="Hambúrguer Inbrasa Tudo"></span></div>
-          <div class="card-content">
-            <p class="mini-label">Pra quem não economiza fome</p>
-            <h3>Inbrasa Tudo</h3>
-            <p>Blend de costela 160g, cheddar, bacon, vinagrete, molho de bacon e 2 anéis de cebola.</p>
-            <div class="price"><small>R$</small> 45<span>,00</span></div>
-          </div>
+        <article class="menu-card">
+          <span class="number">03</span>
+          <div class="card-flame">🔥</div>
+          <p class="tag">Pra quem não economiza fome</p>
+          <h3>INBRASA TUDO</h3>
+          <p>Carne de 160g, cheddar, bacon, vinagrete, molho de bacon e 2 anéis de cebola.</p>
+          <div class="price"><small>R$</small> 45<span>,00</span></div>
         </article>
       </div>
     </section>
 
-    <section class="brand-statement" id="sobre">
+    <section class="statement" id="sobre">
       <div>
-        <p class="eyebrow"><span>🔥</span> o fogo é parte da receita</p>
-        <h2>Não é só hambúrguer.<br><span>É In-Brasa.</span></h2>
+        <p class="eyebrow">🔥 O FOGO É PARTE DA RECEITA</p>
+        <h2>NÃO É SÓ HAMBÚRGUER.<br><span>É IN-BRASA.</span></h2>
       </div>
-      <p>Fogo alto, carne suculenta e aquele sabor tostado que só a brasa entrega. A experiência começa antes da primeira mordida.</p>
+      <p>Carne suculenta, calor intenso e aquele sabor tostado que só a brasa entrega. A experiência começa antes da primeira mordida.</p>
     </section>
 
-    <section class="combos-teaser" id="combos">
+    <section class="combos" id="combos">
       <div class="combo-copy">
-        <p class="eyebrow"><span>🔥</span> combos que valem mais</p>
-        <h2>Mais sabor.<br><span>Mais brasa.</span></h2>
-        <p>Escolha o seu combo e leve hambúrguer, batata e bebida em uma experiência completa.</p>
-        <a class="secondary" href="#contato">Quero meu combo</a>
+        <p class="eyebrow">🔥 COMBOS QUE VALEM MAIS</p>
+        <h2>MAIS SABOR.<br><span>MAIS BRASA.</span></h2>
+        <p>Monte a experiência completa com hambúrguer, batata e bebida.</p>
+        <a class="pill pill-outline" href="#contato">Quero meu combo</a>
       </div>
-      <div class="combo-visual">
-        <span class="sprite combo-sprite spr-brutal" role="img" aria-label="Combo Brasa Brutal"></span>
-        <div class="combo-badge"><small>Brasa</small><strong>Brutal</strong></div>
+      <div class="combo-stack">
+        <div><small>COMBO 01</small><strong>BRASA SIMPLES</strong><span>R$ 34,90</span></div>
+        <div><small>COMBO 02</small><strong>BRASA FORTE</strong><span>R$ 44,90</span></div>
+        <div class="hot"><small>COMBO 04 • MAIS PEDIDO</small><strong>BRASA BRUTAL</strong><span>R$ 59,90</span></div>
       </div>
     </section>
 
-    <section class="contact" id="contato">
-      <p>🔥 Feito na brasa. Feito pra você não resistir.</p>
-      <a class="order" href="#topo">Voltar ao topo</a>
-    </section>
+    <footer id="contato">
+      <p>🔥 FEITO NA BRASA. FEITO PRA VOCÊ NÃO RESISTIR.</p>
+      <a class="pill pill-outline" href="#topo">Voltar ao topo</a>
+    </footer>
   </main>
 
   <div class="mobile-menu" aria-hidden="true">
