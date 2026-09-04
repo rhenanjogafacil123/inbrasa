@@ -1,0 +1,127 @@
+/* PARTE 3 — HAMBURGUER EM CAMADAS TRANSPARENTES + MONTAGEM NO SCROLL */
+.burger-stage{
+  height:248svh;
+  background:
+    radial-gradient(circle at 68% 54%,rgba(255,72,0,.14),transparent 27%),
+    radial-gradient(circle at 73% 84%,rgba(255,106,19,.08),transparent 25%),
+    linear-gradient(180deg,#070605 0%,#050403 52%,#080604 100%);
+  isolation:isolate;
+}
+.burger-stage:before{
+  content:"";position:absolute;inset:0;pointer-events:none;z-index:0;
+  background:
+    linear-gradient(90deg,rgba(0,0,0,.76),transparent 46%,rgba(0,0,0,.08) 72%,rgba(0,0,0,.36)),
+    radial-gradient(ellipse at 72% 97%,rgba(255,72,0,.09),transparent 28%);
+}
+.burger-stage:after{
+  content:"";position:absolute;inset:0;pointer-events:none;z-index:1;opacity:.32;
+  background-image:repeating-linear-gradient(112deg,transparent 0 26px,rgba(255,255,255,.008) 27px,transparent 28px 54px);
+  mix-blend-mode:soft-light;
+}
+.burger-sticky{
+  min-height:640px;
+  grid-template-columns:34% 66%;
+  padding:92px clamp(24px,5.8vw,88px) 56px;
+}
+.burger-sticky:before{background:linear-gradient(90deg,rgba(0,0,0,.88),rgba(0,0,0,.22) 48%,rgba(0,0,0,.035) 79%)}
+
+.assembly-copy{max-width:430px;z-index:20}
+.assembly-copy .eyebrow{color:#ff8730}
+.assembly-copy h2{font-size:clamp(54px,5.5vw,88px);letter-spacing:-.02em}
+.assembly-copy h2 span{background:linear-gradient(180deg,#ff8c32,#ff5308 54%,#bf2800);-webkit-background-clip:text;background-clip:text;color:transparent;filter:drop-shadow(0 0 12px rgba(255,75,0,.09))}
+.assembly-copy>p:last-child{color:#aaa199;max-width:360px}
+
+.burger-zone{
+  width:min(61vw,860px);
+  height:min(82svh,790px);
+  overflow:visible;
+  perspective:1100px;
+}
+.burger-zone:before{
+  content:"";position:absolute;z-index:-1;width:74%;height:74%;border-radius:50%;
+  background:radial-gradient(circle,rgba(255,100,22,.16) 0%,rgba(255,62,0,.075) 28%,rgba(255,60,0,.018) 54%,transparent 72%);
+  filter:blur(9px);
+}
+.burger-zone:after{
+  content:"";position:absolute;left:50%;bottom:2%;width:72%;height:16%;transform:translateX(-50%);z-index:2;
+  background:radial-gradient(ellipse,rgba(255,65,0,.14),rgba(35,10,0,.15) 36%,transparent 70%);
+  filter:blur(13px);pointer-events:none;
+}
+
+.burger-canvas{
+  width:min(500px,43vw);height:auto;aspect-ratio:620/930;
+  filter:drop-shadow(0 28px 42px rgba(0,0,0,.55));
+  transform:none!important;
+  contain:layout style;
+}
+.burger-layer{
+  position:absolute;inset:0;z-index:10;will-change:transform;
+  transform-origin:50% 50%;backface-visibility:hidden;-webkit-backface-visibility:hidden;
+}
+.burger-layer img{
+  display:block;width:100%;height:100%;object-fit:contain;user-select:none;-webkit-user-drag:none;
+  filter:saturate(1.06) contrast(1.035) brightness(1.02) drop-shadow(0 13px 12px rgba(0,0,0,.28));
+  backface-visibility:hidden;-webkit-backface-visibility:hidden;
+}
+.layer-bun-top{clip-path:inset(0 0 81.5% 0);z-index:17}
+.layer-bacon{clip-path:inset(15% 0 69.5% 0);z-index:16}
+.layer-lettuce{clip-path:inset(27.2% 0 54.6% 0);z-index:15}
+.layer-tomato{clip-path:inset(39.5% 0 43.5% 0);z-index:14}
+.layer-onion{clip-path:inset(51% 0 34.6% 0);z-index:13}
+.layer-patty{clip-path:inset(59.5% 0 14.5% 0);z-index:12}
+.layer-bun-bottom{clip-path:inset(81% 0 .5% 0);z-index:11}
+.layer-patty img{filter:saturate(1.08) contrast(1.06) brightness(1.01) drop-shadow(0 16px 15px rgba(0,0,0,.38)) drop-shadow(0 0 13px rgba(255,91,8,.055))}
+.layer-bun-bottom img{filter:saturate(1.04) contrast(1.04) drop-shadow(0 18px 17px rgba(0,0,0,.38))}
+
+.burger-halo{inset:15% 5% 5%;background:radial-gradient(circle,rgba(255,83,8,.13),rgba(255,45,0,.035) 40%,transparent 70%);filter:blur(25px);animation:haloPulse 5.5s ease-in-out infinite alternate}
+@keyframes haloPulse{to{opacity:.78;transform:scale(1.06)}}
+.burger-shadow{bottom:1%;width:58%;height:7%;background:radial-gradient(ellipse,rgba(0,0,0,.94),rgba(255,49,0,.04) 48%,transparent 73%);filter:blur(12px)}
+
+.burger-bed{position:absolute;left:50%;bottom:-1%;width:74%;height:14%;transform:translateX(-50%);z-index:3;pointer-events:none}
+.burger-bed:before{content:"";position:absolute;inset:36% 4% 0;border-radius:50%;background:radial-gradient(ellipse,#160904 0%,#090706 55%,transparent 73%);box-shadow:inset 0 2px 0 rgba(255,105,24,.08)}
+.burger-bed:after{content:"";position:absolute;left:18%;right:18%;bottom:18%;height:2px;background:linear-gradient(90deg,transparent,#ff3b00 18%,#ff8d2a 48%,#ff4300 79%,transparent);filter:blur(2px);opacity:.45;box-shadow:0 0 18px rgba(255,61,0,.35)}
+
+.smoke{z-index:1;opacity:.13;filter:blur(40px);mix-blend-mode:screen;animation:smokePremium 8s ease-in-out infinite alternate}
+.smoke-1{width:58%;height:46%;right:2%;top:8%;background:radial-gradient(circle at 50% 55%,rgba(235,151,100,.11),rgba(255,86,20,.035) 35%,transparent 72%)}
+.smoke-2{width:52%;height:50%;left:20%;bottom:4%;background:radial-gradient(circle,rgba(255,91,24,.075),rgba(155,80,53,.025) 43%,transparent 72%);animation-delay:-4s}
+@keyframes smokePremium{0%{transform:translate3d(-6px,9px,0) scale(.98);opacity:.1}100%{transform:translate3d(14px,-17px,0) scale(1.08);opacity:.18}}
+
+.scene-spark{position:absolute;z-index:4;width:3px;height:3px;border-radius:50%;background:#ff7a22;box-shadow:0 0 8px rgba(255,78,0,.9);opacity:.08;pointer-events:none;animation:sparkFloat var(--dur,5s) ease-in-out infinite alternate;animation-delay:var(--delay,0s)}
+@keyframes sparkFloat{0%{transform:translate3d(0,8px,0) scale(.7);opacity:.08}55%{opacity:.7}100%{transform:translate3d(var(--dx,8px),-34px,0) scale(1.15);opacity:.05}}
+
+.assembly-cue{z-index:25}
+.progress{z-index:25;right:18px;height:164px;border-radius:999px}
+.progress span{border-radius:999px;background:linear-gradient(#ff9a37,#ff5a08 55%,#c72d00);box-shadow:0 0 13px rgba(255,78,0,.65)}
+.assembled-label{z-index:26;padding:9px 13px;border:1px solid rgba(255,102,23,.18);border-radius:999px;background:rgba(5,5,5,.46);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px)}
+
+@media(max-width:1020px){
+  .burger-sticky{grid-template-columns:32% 68%;padding-inline:25px}
+  .burger-canvas{width:min(520px,52vw)}
+  .burger-zone{width:66vw}
+}
+
+@media(max-width:760px){
+  .burger-stage{height:238svh}
+  .burger-sticky{min-height:600px;padding:72px 10px 30px;background:radial-gradient(circle at 50% 62%,rgba(151,42,0,.13),transparent 39%),linear-gradient(#050403,#070504)}
+  .burger-sticky:before{background:linear-gradient(180deg,rgba(0,0,0,.34),rgba(0,0,0,.04) 42%,rgba(0,0,0,.24))}
+  .assembly-copy{top:71px;left:18px;right:18px}
+  .assembly-copy h2{font-size:35px}
+  .assembly-copy>p:last-child{max-width:310px;color:#a79e96}
+  .burger-zone{bottom:25px;height:calc(100svh - 132px);width:100%;overflow:visible}
+  .burger-canvas{width:min(95vw,410px);max-width:410px;aspect-ratio:620/930;filter:drop-shadow(0 24px 30px rgba(0,0,0,.5))}
+  .burger-zone:before{width:92%;height:73%;top:18%}
+  .burger-bed{bottom:1%;width:88%}
+  .progress{right:6px;height:105px;top:59%}
+  .assembled-label{font-size:8.5px;bottom:max(10px,env(safe-area-inset-bottom));padding:7px 10px}
+  .assembly-cue{bottom:max(9px,env(safe-area-inset-bottom))}
+  .scene-spark{width:2px;height:2px}
+}
+
+@media(max-width:390px){
+  .assembly-copy h2{font-size:32px}
+  .burger-canvas{width:98vw;max-width:390px}
+}
+
+@media(prefers-reduced-motion:reduce){
+  .burger-halo,.scene-spark{animation:none!important}
+}
