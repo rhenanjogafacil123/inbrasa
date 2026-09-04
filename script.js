@@ -1,6 +1,8 @@
 (()=>{
   const root=document.documentElement;
   const stage=document.querySelector('.burger-stage');
+  const sticky=document.querySelector('.burger-sticky');
+  const canvas=document.querySelector('.burger-canvas');
   const slices=[...document.querySelectorAll('.burger-slice')];
   const header=document.querySelector('.topbar');
   const menuButton=document.querySelector('.menu-button');
@@ -9,6 +11,7 @@
 
   const clamp=(n,a,b)=>Math.min(b,Math.max(a,n));
   const smooth=t=>t*t*(3-2*t);
+  const snap=n=>Math.round(n*4)/4;
 
   const desktop={
     endY:[118,84,54,22,-12,-52,-96],
@@ -21,24 +24,43 @@
     rot:[-.7,.55,-.4,.35,-.35,.2,-.15]
   };
 
+  /* Safari/iPhone: evita clarões e tremidas quando as fatias se cruzam. */
+  slices.forEach((slice,i)=>{
+    slice.style.mixBlendMode='lighten';
+    slice.style.zIndex=String(20-i);
+    slice.style.backfaceVisibility='hidden';
+    slice.style.webkitBackfaceVisibility='hidden';
+    slice.style.perspective='1000px';
+  });
+  if(canvas){
+    canvas.style.backfaceVisibility='hidden';
+    canvas.style.webkitBackfaceVisibility='hidden';
+    canvas.style.transformStyle='flat';
+  }
+
   function updateAssembly(){
     if(!stage)return;
     const r=stage.getBoundingClientRect();
-    const travel=Math.max(1,stage.offsetHeight-innerHeight);
 
-    /* Enquanto a segunda seção ainda está entrando na tela, progress fica em 0.
-       A montagem só começa quando o topo da seção já encostou no topo da viewport. */
+    /* Usa a altura REAL da área sticky, e não innerHeight.
+       Isso impede o salto que o Safari causa ao esconder/mostrar a barra inferior. */
+    const stickyHeight=sticky?.offsetHeight || document.documentElement.clientHeight;
+    const travel=Math.max(1,stage.offsetHeight-stickyHeight);
     const raw=clamp(-r.top/travel,0,1);
-    const p=smooth(raw);
+
+    /* Pequena área morta no começo e no fim: o hambúrguer entra inteiro,
+       monta com calma e termina estável antes de liberar a próxima seção. */
+    const motion=clamp((raw-.055)/.89,0,1);
+    const p=smooth(motion);
     root.style.setProperty('--progress',raw.toFixed(4));
 
     const cfg=innerWidth<=760?mobile:desktop;
     const viewportScale=innerWidth<=760?1:Math.min(1.08,Math.max(.94,innerWidth/1440));
 
     slices.forEach((slice,i)=>{
-      const y=cfg.endY[i]*p*viewportScale;
-      const x=cfg.endX[i]*p*viewportScale;
-      const rot=cfg.rot[i]*p;
+      const y=snap(cfg.endY[i]*p*viewportScale);
+      const x=snap(cfg.endX[i]*p*viewportScale);
+      const rot=snap(cfg.rot[i]*p);
       slice.style.transform=reduced?'none':`translate3d(${x}px,${y}px,0) rotate(${rot}deg)`;
       slice.style.opacity='1';
     });
@@ -54,6 +76,7 @@
   }
   addEventListener('scroll',schedule,{passive:true});
   addEventListener('resize',schedule,{passive:true});
+  addEventListener('orientationchange',()=>setTimeout(updateAssembly,120),{passive:true});
   updateAssembly();
 
   const emberRoot=document.querySelector('.embers');
