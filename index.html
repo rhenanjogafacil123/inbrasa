@@ -34,20 +34,38 @@
   </header>
 
   <main>
-    <section class="hero-stage" id="inicio">
-      <div class="hero-sticky">
-        <div class="fire-glow fire-glow-a" aria-hidden="true"></div>
-        <div class="fire-glow fire-glow-b" aria-hidden="true"></div>
+    <!-- MOMENTO 1: primeira tela somente com a mensagem da marca -->
+    <section class="hero-intro" id="inicio">
+      <div class="fire-glow intro-glow-a" aria-hidden="true"></div>
+      <div class="fire-glow intro-glow-b" aria-hidden="true"></div>
+      <div class="intro-copy">
+        <p class="eyebrow">🔥 ARTESANAL <i>•</i> DEFUMADO <i>•</i> IRRESISTÍVEL</p>
+        <h1><span>FEITO NA</span><b>BRASA</b></h1>
+        <div class="rough-line" aria-hidden="true"></div>
+        <p class="hero-text">Ingredientes selecionados e o verdadeiro sabor da brasa. Hambúrgueres artesanais preparados com fogo, técnica e paixão.</p>
+        <div class="hero-actions">
+          <a class="pill pill-main" href="#cardapio">🔥 Pedir agora</a>
+          <a class="pill pill-outline" href="#cardapio">Ver cardápio</a>
+        </div>
+      </div>
 
-        <div class="hero-copy">
-          <p class="eyebrow">🔥 ARTESANAL <i>•</i> DEFUMADO <i>•</i> IRRESISTÍVEL</p>
-          <h1><span>FEITO NA</span><b>BRASA</b></h1>
-          <div class="rough-line" aria-hidden="true"></div>
-          <p class="hero-text">Ingredientes selecionados e o verdadeiro sabor da brasa. Hambúrgueres artesanais preparados com fogo, técnica e paixão.</p>
-          <div class="hero-actions">
-            <a class="pill pill-main" href="#cardapio">🔥 Pedir agora</a>
-            <a class="pill pill-outline" href="#cardapio">Ver cardápio</a>
-          </div>
+      <a class="intro-cue" href="#montagem" aria-label="Descer para ver o hambúrguer">
+        <div class="mouse"><span></span></div>
+        <div><strong>DESCUBRA CADA CAMADA</strong><small>Desça para ver o hambúrguer</small></div>
+        <b>↓</b>
+      </a>
+    </section>
+
+    <!-- MOMENTO 2: o hambúrguer entra inteiro; só depois começa a montagem -->
+    <section class="burger-stage" id="montagem">
+      <div class="burger-sticky">
+        <div class="fire-glow burger-glow-a" aria-hidden="true"></div>
+        <div class="fire-glow burger-glow-b" aria-hidden="true"></div>
+
+        <div class="assembly-copy">
+          <p class="eyebrow">🔥 CAMADA POR CAMADA</p>
+          <h2>AGORA<br><span>MONTA A BRASA.</span></h2>
+          <p>Primeiro você vê cada ingrediente. Depois, com o scroll, tudo se encontra.</p>
         </div>
 
         <div class="burger-zone" aria-label="Hambúrguer fotográfico se montando conforme o scroll">
@@ -66,12 +84,13 @@
           <div class="burger-shadow" aria-hidden="true"></div>
         </div>
 
-        <div class="scroll-cue" aria-hidden="true">
+        <div class="assembly-cue" aria-hidden="true">
           <div class="mouse"><span></span></div>
-          <div><strong>ROLE PARA EXPLORAR</strong><small>O sabor se revela a cada camada</small></div>
+          <div><strong>ROLE PARA MONTAR</strong><small>O hambúrguer só começa agora</small></div>
           <b>↓</b>
         </div>
         <div class="progress" aria-hidden="true"><span></span></div>
+        <div class="assembled-label" aria-hidden="true">🔥 PRONTO. AGORA É IN-BRASA.</div>
       </div>
     </section>
 
