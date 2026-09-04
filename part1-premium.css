@@ -1,0 +1,99 @@
+/* PARTE 1 — HEADER + MOLDURA PREMIUM DA PRIMEIRA DOBRA */
+:root{--shell-x:clamp(10px,2.2vw,34px);--shell-top:14px;--glass:rgba(8,7,6,.52);--glass-strong:rgba(7,7,7,.9);--hairline:rgba(255,255,255,.11)}
+
+/* Header passa a funcionar como uma peça da moldura, não uma barra solta */
+.topbar{
+  left:var(--shell-x);right:var(--shell-x);top:var(--shell-top);height:74px;
+  padding:0 20px 0 16px;grid-template-columns:250px 1fr 174px;gap:18px;
+  border:1px solid rgba(255,255,255,.105);border-radius:18px;
+  background:linear-gradient(180deg,rgba(16,13,11,.66),rgba(7,7,7,.34));
+  box-shadow:inset 0 1px 0 rgba(255,255,255,.045),0 14px 44px rgba(0,0,0,.14);
+  backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);
+  transition:height .3s ease,top .3s ease,background .3s ease,border-color .3s ease,box-shadow .3s ease,backdrop-filter .3s ease;
+}
+.topbar.scrolled{
+  top:8px;height:64px;background:var(--glass-strong);border-color:rgba(255,101,24,.16);
+  backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);
+  box-shadow:0 14px 42px rgba(0,0,0,.38),inset 0 1px 0 rgba(255,255,255,.055);
+}
+
+.brand{gap:12px;min-width:0}
+.brand-fire{
+  flex:0 0 auto;width:43px;height:43px;display:grid;place-items:center;font-size:25px;
+  border-radius:12px;border:1px solid rgba(255,111,28,.28);
+  background:radial-gradient(circle at 50% 70%,rgba(255,90,8,.22),transparent 65%),rgba(255,255,255,.025);
+  box-shadow:inset 0 0 18px rgba(255,75,0,.08),0 0 22px rgba(255,74,0,.08);
+  filter:none;
+}
+.brand-copy strong{font-size:28px;letter-spacing:.025em;color:#f4f0e9}
+.brand-copy small{font-size:9px;letter-spacing:.18em;color:#ff7a16;margin-top:5px;white-space:nowrap}
+
+.desktop-nav{gap:clamp(19px,2.7vw,40px);font-size:12px;letter-spacing:.09em}
+.desktop-nav a{color:#bdb8b2;padding:8px 0;transition:color .22s ease}
+.desktop-nav a:after{bottom:2px;height:1px;background:linear-gradient(90deg,#ff4c00,#ff8b27);box-shadow:0 0 8px rgba(255,77,0,.45)}
+.desktop-nav a.active{color:#fff}
+.desktop-nav a.active:after{right:0}
+
+.topbar .pill-small{
+  min-width:154px;padding:11px 18px;border-color:rgba(255,104,23,.66);
+  background:linear-gradient(180deg,rgba(255,96,16,.075),rgba(255,57,0,.025));
+  color:#f6eee7;box-shadow:inset 0 0 0 1px rgba(255,255,255,.015),0 0 0 rgba(255,79,0,0);
+  font-size:12px;letter-spacing:.08em;
+}
+.topbar .pill-small:hover{background:linear-gradient(180deg,rgba(255,105,24,.17),rgba(255,55,0,.065));box-shadow:0 0 25px rgba(255,77,0,.12);border-color:#ff6a18}
+
+/* A primeira dobra vira uma vitrine central premium */
+.hero-intro{
+  min-height:calc(100svh - 28px);margin:14px var(--shell-x);border-radius:28px;
+  border:1px solid rgba(255,255,255,.095);
+  box-shadow:inset 0 1px 0 rgba(255,255,255,.025),inset 0 -80px 110px rgba(0,0,0,.22),0 24px 90px rgba(0,0,0,.16);
+  isolation:isolate;
+}
+.hero-intro:after{
+  content:"";position:absolute;z-index:1;inset:0;border-radius:inherit;pointer-events:none;
+  background:
+    linear-gradient(90deg,rgba(255,92,10,.34),transparent 11%) top left/150px 1px no-repeat,
+    linear-gradient(180deg,rgba(255,92,10,.26),transparent 12%) top left/1px 150px no-repeat,
+    linear-gradient(270deg,rgba(255,255,255,.08),transparent 12%) bottom right/170px 1px no-repeat;
+  opacity:.62;
+}
+.hero-intro .intro-copy,.hero-intro .intro-cue{z-index:4}
+.hero-intro .intro-glow-a,.hero-intro .intro-glow-b{z-index:2}
+
+/* leve profundidade no pano de fundo sem mudar a Hero aprovada */
+.hero-intro{background:
+  radial-gradient(circle at 76% 49%,rgba(183,47,0,.15),transparent 33%),
+  radial-gradient(circle at 14% 86%,rgba(255,86,10,.035),transparent 30%),
+  linear-gradient(145deg,#050505 0%,#080706 58%,#0b0806 100%)}
+.hero-intro:before{z-index:2;border-radius:inherit;background:linear-gradient(90deg,rgba(0,0,0,.93),rgba(0,0,0,.59) 53%,rgba(0,0,0,.16) 78%,rgba(0,0,0,.3))}
+
+/* Mobile menu como painel premium */
+.menu-button{border-radius:10px;border:1px solid transparent;transition:.2s ease}
+.menu-button:hover{border-color:rgba(255,103,21,.22);background:rgba(255,92,10,.04)}
+.mobile-menu{border:1px solid rgba(255,255,255,.09);background:radial-gradient(circle at 50% 18%,rgba(255,73,0,.1),transparent 31%),rgba(5,5,5,.975)}
+.mobile-menu a{position:relative;letter-spacing:.035em;color:#eee9e2}
+.mobile-menu a:after{content:"";position:absolute;left:50%;right:50%;bottom:-4px;height:1px;background:#ff6515;transition:.2s}
+.mobile-menu a:hover:after,.mobile-menu a.active:after{left:20%;right:20%}
+
+@media(max-width:1020px){
+  .topbar{grid-template-columns:210px 1fr 145px;padding-inline:13px 15px}
+  .brand-fire{width:39px;height:39px;font-size:23px}.brand-copy strong{font-size:25px}.brand-copy small{font-size:7.8px}
+  .desktop-nav{gap:17px;font-size:10.5px}.topbar .pill-small{min-width:136px;padding-inline:13px;font-size:10.5px}
+}
+
+@media(max-width:760px){
+  :root{--shell-x:8px;--shell-top:8px}
+  .topbar{left:8px;right:8px;top:8px;height:60px;padding:0 10px 0 9px;grid-template-columns:1fr auto;border-radius:15px;background:rgba(8,8,8,.58);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px)}
+  .topbar.scrolled{top:6px;height:56px;border-radius:14px}
+  .brand{gap:8px}.brand-fire{width:36px;height:36px;border-radius:10px;font-size:21px}.brand-copy strong{font-size:21px}.brand-copy small{font-size:6.6px;letter-spacing:.15em;margin-top:3px}
+  .menu-button{display:block;padding:7px 8px}.menu-button span{width:24px;height:1.5px;margin:5px 0;border-radius:2px}.menu-button span:nth-child(2){width:18px;margin-left:6px}
+
+  .hero-intro{margin:8px;min-height:calc(100svh - 16px);border-radius:22px;border-color:rgba(255,255,255,.09);box-shadow:inset 0 1px 0 rgba(255,255,255,.025),0 18px 50px rgba(0,0,0,.18)}
+  .hero-intro:after{background:linear-gradient(90deg,rgba(255,92,10,.3),transparent 18%) top left/110px 1px no-repeat,linear-gradient(180deg,rgba(255,92,10,.23),transparent 18%) top left/1px 110px no-repeat;opacity:.7}
+  .mobile-menu{inset:7px;border-radius:22px;transform:translateY(calc(-100% - 18px));gap:22px;font-size:36px;box-shadow:0 24px 70px rgba(0,0,0,.5)}
+  .mobile-menu.open{transform:translateY(0)}
+}
+
+@media(max-width:390px){
+  .brand-fire{width:34px;height:34px;font-size:20px}.brand-copy strong{font-size:20px}.brand-copy small{font-size:6.1px}
+}
