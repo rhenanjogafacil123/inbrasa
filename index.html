@@ -14,6 +14,7 @@
   <link rel="stylesheet" href="./part1-premium.css" />
   <link rel="stylesheet" href="./part2-hero.css" />
   <link rel="stylesheet" href="./part3-burger.css" />
+  <link rel="stylesheet" href="./part4-combos.css" />
 </head>
 <body>
   <div class="grain" aria-hidden="true"></div>
@@ -108,6 +109,72 @@
       </div>
     </section>
 
+    <section class="combo-showcase" id="combos">
+      <div class="combo-transition" data-combo-reveal>🔥 A FOME NÃO PARA NO HAMBÚRGUER</div>
+      <div class="combo-heading" data-combo-reveal>
+        <p class="eyebrow">🔥 COMBOS IN-BRASA</p>
+        <h2>OS MELHORES COMBOS <span>NA BRASA</span></h2>
+        <p>Combinações completas para matar a fome do jeito certo: hambúrguer, acompanhamento e bebida.</p>
+      </div>
+
+      <div class="combo-cards">
+        <article class="combo-card" data-combo-reveal>
+          <div class="combo-photo">
+            <img src="https://images.pexels.com/photos/30500753/pexels-photo-30500753/free-photo-of-gourmet-burger-french-fries-and-cola-display.jpeg?auto=compress&amp;dpr=1&amp;h=750&amp;w=1260" alt="Combo de hambúrguer com batata e bebida" loading="lazy" decoding="async">
+          </div>
+          <div class="combo-badge">🔥 Combo completo</div>
+          <div class="combo-card-body">
+            <span class="combo-index">COMBO 01</span>
+            <h3>BRASA SIMPLES</h3>
+            <p>Hambúrguer + acompanhamento + bebida.</p>
+            <div class="combo-meta">
+              <div class="combo-price"><small>R$</small>34<em>,90</em></div>
+              <a class="combo-order" href="#contato">Pedir este 🔥</a>
+            </div>
+          </div>
+        </article>
+
+        <article class="combo-card featured" data-combo-reveal>
+          <div class="combo-photo">
+            <img src="https://images.pexels.com/photos/31300945/pexels-photo-31300945.jpeg?cs=srgb&amp;dl=pexels-antonio-di-giacomo-64078839-31300945.jpg&amp;fm=jpg" alt="Combo premium de hambúrguer com acompanhamento e bebida" loading="lazy" decoding="async">
+          </div>
+          <div class="combo-badge">🔥 Mais pedido</div>
+          <div class="combo-card-body">
+            <span class="combo-index">COMBO 02</span>
+            <h3>BRASA FORTE</h3>
+            <p>Hambúrguer + acompanhamento + bebida.</p>
+            <div class="combo-meta">
+              <div class="combo-price"><small>R$</small>44<em>,90</em></div>
+              <a class="combo-order" href="#contato">Pedir este 🔥</a>
+            </div>
+          </div>
+        </article>
+
+        <article class="combo-card" data-combo-reveal>
+          <div class="combo-photo">
+            <img src="https://images.pexels.com/photos/14773000/pexels-photo-14773000.jpeg?auto=compress&amp;dpr=1&amp;h=750&amp;w=1260" alt="Combo reforçado de hambúrguer com batata e bebida" loading="lazy" decoding="async">
+          </div>
+          <div class="combo-badge">🔥 Fome de verdade</div>
+          <div class="combo-card-body">
+            <span class="combo-index">COMBO 04</span>
+            <h3>BRASA BRUTAL</h3>
+            <p>Hambúrguer + acompanhamento + bebida.</p>
+            <div class="combo-meta">
+              <div class="combo-price"><small>R$</small>59<em>,90</em></div>
+              <a class="combo-order" href="#contato">Pedir este 🔥</a>
+            </div>
+          </div>
+        </article>
+      </div>
+
+      <div class="combo-benefits" data-combo-reveal aria-hidden="true">
+        <div><b>🍔</b> Hambúrguer artesanal</div>
+        <div><b>🍟</b> Acompanhamento</div>
+        <div><b>🥤</b> Bebida gelada</div>
+        <div><b>🔥</b> Experiência In-Brasa</div>
+      </div>
+    </section>
+
     <section class="menu-section" id="cardapio">
       <div class="section-kicker">🔥 DIRETO DA NOSSA GRELHA</div>
       <div class="section-head">
@@ -154,20 +221,6 @@
       <p>Carne suculenta, calor intenso e aquele sabor tostado que só a brasa entrega. A experiência começa antes da primeira mordida.</p>
     </section>
 
-    <section class="combos" id="combos">
-      <div class="combo-copy">
-        <p class="eyebrow">🔥 COMBOS QUE VALEM MAIS</p>
-        <h2>MAIS SABOR.<br><span>MAIS BRASA.</span></h2>
-        <p>Monte a experiência completa com hambúrguer, batata e bebida.</p>
-        <a class="pill pill-outline" href="#contato">Quero meu combo</a>
-      </div>
-      <div class="combo-stack">
-        <div><small>COMBO 01</small><strong>BRASA SIMPLES</strong><span>R$ 34,90</span></div>
-        <div><small>COMBO 02</small><strong>BRASA FORTE</strong><span>R$ 44,90</span></div>
-        <div class="hot"><small>COMBO 04 • MAIS PEDIDO</small><strong>BRASA BRUTAL</strong><span>R$ 59,90</span></div>
-      </div>
-    </section>
-
     <footer id="contato">
       <p>🔥 FEITO NA BRASA. FEITO PRA VOCÊ NÃO RESISTIR.</p>
       <a class="pill pill-outline" href="#topo">Voltar ao topo</a>
@@ -181,5 +234,6 @@
   <script src="./script.js"></script>
   <script src="./nav-active.js"></script>
   <script src="./part3-burger.js"></script>
+  <script src="./part4-combos.js"></script>
 </body>
 </html>
