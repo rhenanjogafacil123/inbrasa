@@ -9,9 +9,11 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Anton&family=Oswald:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="preload" as="image" href="./assets/burger-layers.webp" type="image/webp" />
   <link rel="stylesheet" href="./style.css" />
   <link rel="stylesheet" href="./part1-premium.css" />
   <link rel="stylesheet" href="./part2-hero.css" />
+  <link rel="stylesheet" href="./part3-burger.css" />
 </head>
 <body>
   <div class="grain" aria-hidden="true"></div>
@@ -77,20 +79,23 @@
           <p>Primeiro você vê cada ingrediente. Depois, com o scroll, tudo se encontra.</p>
         </div>
 
-        <div class="burger-zone" aria-label="Hambúrguer fotográfico se montando conforme o scroll">
+        <div class="burger-zone" aria-label="Hambúrguer com ingredientes flutuantes que se montam conforme o scroll">
           <div class="smoke smoke-1" aria-hidden="true"></div>
           <div class="smoke smoke-2" aria-hidden="true"></div>
           <div class="burger-halo" aria-hidden="true"></div>
-          <div class="burger-canvas">
-            <div class="burger-slice s0" data-layer="0"></div>
-            <div class="burger-slice s1" data-layer="1"></div>
-            <div class="burger-slice s2" data-layer="2"></div>
-            <div class="burger-slice s3" data-layer="3"></div>
-            <div class="burger-slice s4" data-layer="4"></div>
-            <div class="burger-slice s5" data-layer="5"></div>
-            <div class="burger-slice s6" data-layer="6"></div>
+
+          <div class="burger-canvas" aria-hidden="true">
+            <div class="burger-layer layer-bun-top" data-layer="0"><img src="./assets/burger-layers.webp" alt="" decoding="async"></div>
+            <div class="burger-layer layer-bacon" data-layer="1"><img src="./assets/burger-layers.webp" alt="" decoding="async"></div>
+            <div class="burger-layer layer-lettuce" data-layer="2"><img src="./assets/burger-layers.webp" alt="" decoding="async"></div>
+            <div class="burger-layer layer-tomato" data-layer="3"><img src="./assets/burger-layers.webp" alt="" decoding="async"></div>
+            <div class="burger-layer layer-onion" data-layer="4"><img src="./assets/burger-layers.webp" alt="" decoding="async"></div>
+            <div class="burger-layer layer-patty" data-layer="5"><img src="./assets/burger-layers.webp" alt="" decoding="async"></div>
+            <div class="burger-layer layer-bun-bottom" data-layer="6"><img src="./assets/burger-layers.webp" alt="" decoding="async"></div>
           </div>
+
           <div class="burger-shadow" aria-hidden="true"></div>
+          <div class="burger-bed" aria-hidden="true"></div>
         </div>
 
         <div class="assembly-cue" aria-hidden="true">
@@ -175,5 +180,6 @@
 
   <script src="./script.js"></script>
   <script src="./nav-active.js"></script>
+  <script src="./part3-burger.js"></script>
 </body>
 </html>
