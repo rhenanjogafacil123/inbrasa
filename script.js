@@ -1,6 +1,6 @@
 (()=>{
   const root=document.documentElement;
-  const hero=document.querySelector('.hero-stage');
+  const stage=document.querySelector('.burger-stage');
   const slices=[...document.querySelectorAll('.burger-slice')];
   const header=document.querySelector('.topbar');
   const menuButton=document.querySelector('.menu-button');
@@ -8,38 +8,39 @@
   const reduced=matchMedia('(prefers-reduced-motion: reduce)').matches;
 
   const clamp=(n,a,b)=>Math.min(b,Math.max(a,n));
-  const ease=t=>1-Math.pow(1-t,3);
+  const smooth=t=>t*t*(3-2*t);
 
   const desktop={
-    startY:[-95,-70,-42,-12,24,62,102],
-    endY:[112,80,48,18,-16,-54,-94],
-    startX:[16,-18,12,-10,10,-8,8],
-    rot:[-2.2,2.4,-1.5,1.3,-1.8,1,-.8]
+    endY:[118,84,54,22,-12,-52,-96],
+    endX:[0,2,-3,2,-2,1,0],
+    rot:[-1.2,.9,-.6,.5,-.5,.3,-.25]
   };
   const mobile={
-    startY:[-62,-45,-29,-8,16,40,68],
-    endY:[72,50,30,10,-10,-34,-58],
-    startX:[7,-8,6,-6,5,-4,4],
-    rot:[-1.2,1.4,-.8,.8,-1,.6,-.5]
+    endY:[86,61,39,16,-9,-38,-72],
+    endX:[0,1,-2,1,-1,1,0],
+    rot:[-.7,.55,-.4,.35,-.35,.2,-.15]
   };
 
-  function updateHero(){
-    if(!hero)return;
-    const r=hero.getBoundingClientRect();
-    const max=Math.max(1,hero.offsetHeight-innerHeight);
-    const raw=clamp(-r.top/max,0,1);
-    const p=ease(raw);
+  function updateAssembly(){
+    if(!stage)return;
+    const r=stage.getBoundingClientRect();
+    const travel=Math.max(1,stage.offsetHeight-innerHeight);
+
+    /* Enquanto a segunda seção ainda está entrando na tela, progress fica em 0.
+       A montagem só começa quando o topo da seção já encostou no topo da viewport. */
+    const raw=clamp(-r.top/travel,0,1);
+    const p=smooth(raw);
     root.style.setProperty('--progress',raw.toFixed(4));
 
     const cfg=innerWidth<=760?mobile:desktop;
-    const scale=innerWidth<=760?1:Math.min(1.12,Math.max(.92,innerWidth/1400));
+    const viewportScale=innerWidth<=760?1:Math.min(1.08,Math.max(.94,innerWidth/1440));
 
     slices.forEach((slice,i)=>{
-      const y=(cfg.startY[i]+(cfg.endY[i]-cfg.startY[i])*p)*scale;
-      const x=cfg.startX[i]*(1-p)*scale;
-      const rot=cfg.rot[i]*(1-p);
+      const y=cfg.endY[i]*p*viewportScale;
+      const x=cfg.endX[i]*p*viewportScale;
+      const rot=cfg.rot[i]*p;
       slice.style.transform=reduced?'none':`translate3d(${x}px,${y}px,0) rotate(${rot}deg)`;
-      slice.style.opacity=(.72+raw*.28).toFixed(3);
+      slice.style.opacity='1';
     });
 
     header?.classList.toggle('scrolled',scrollY>28);
@@ -49,11 +50,11 @@
   function schedule(){
     if(ticking)return;
     ticking=true;
-    requestAnimationFrame(()=>{updateHero();ticking=false});
+    requestAnimationFrame(()=>{updateAssembly();ticking=false});
   }
   addEventListener('scroll',schedule,{passive:true});
   addEventListener('resize',schedule,{passive:true});
-  updateHero();
+  updateAssembly();
 
   const emberRoot=document.querySelector('.embers');
   const count=innerWidth<=760?17:32;
